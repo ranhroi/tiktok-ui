@@ -1,5 +1,5 @@
 
-import Header from '../compoment/Header';
+import Header from '../component/Header';
 
 function HeaderOnly({ children }) {
   return (
