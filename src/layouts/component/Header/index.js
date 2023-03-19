@@ -7,7 +7,7 @@ import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css'; // optional
 
 import { Wrapper as PopperWrapper } from '../Popper';
-import { Logo, Close, Loading, Search } from '~/assets/images/';
+import { Logo, Close, Loading, Search, Plus } from '~/assets/images/';
 import AccountItem from '~/component/GlobalStyles/AccountItem';
 import Button from '~/component/Button';
 
@@ -37,10 +37,10 @@ function Header() {
             <div className={cx('search-result')} tabIndex="-1" {...attrs}>
               <PopperWrapper>
                 <h4 className={cx('search-title')}>Accounts</h4>
-                <AccountItem/>
-                <AccountItem/>
-                <AccountItem/>
-                <AccountItem/>
+                <AccountItem />
+                <AccountItem />
+                <AccountItem />
+                <AccountItem />
               </PopperWrapper>
             </div>
           )}
@@ -59,7 +59,8 @@ function Header() {
         </Tippy>
 
         <div className={cx('actions')}>
-          <Button outline size>Log in</Button>
+          <Button href="/upload" leftIcon={<Plus />} text><span className={cx("text")}>Upload</span></Button>
+          <Button primary>Log in</Button>
         </div>
       </div>
     </header>

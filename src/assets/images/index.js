@@ -9,3 +9,4 @@ export {ReactComponent as Close } from './icon-close.svg';
 export {ReactComponent as Loading } from './icon-loading.svg';
 export {ReactComponent as Search } from './icon-search.svg';
 export {ReactComponent as Check } from './icon-check.svg';
+export {ReactComponent as Plus } from './icon-plus.svg';
