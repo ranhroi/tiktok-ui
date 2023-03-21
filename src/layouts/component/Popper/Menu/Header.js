@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from "./Menu.module.scss"
-import { IconChevronLeft } from '~/component/icons';
+import { IconChevronLeft } from '~/component/Icons';
 
 
 const cx = classNames.bind(styles);

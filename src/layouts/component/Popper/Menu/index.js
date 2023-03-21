@@ -37,7 +37,7 @@ function Menu({ items = [], children, onChange = defaultFc }) {
     return (
         <HeadlessTippy
             interactive
-            //     visible
+        //     visible
             delay={[50,500]}
             placement='bottom-end'
             render={(attrs) => (

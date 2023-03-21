@@ -1,23 +1,20 @@
-import { useEffect, useState, React } from 'react';
 import { Link } from 'react-router-dom';
 
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 
-import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 
-import { Wrapper as PopperWrapper } from '../Popper';
-import AccountItem from '~/component/GlobalStyles/AccountItem';
 import Button from '~/component/Button';
 import Menu from '../Popper/Menu';
-import Image from '~/component/images';
+import Image from '~/component/Images';
+import Search from '../Search';
 import {
   IconLogo,
   IconEffecthouse,
   IconNotification,
-  IconMessage,
+  IconMessageWhite,
   IconCoinsTiktok,
   IconFeeedback,
   IconKeyboard,
@@ -26,12 +23,9 @@ import {
   IconSetting,
   IconPlus,
   IconMore,
-  IconClose,
-  IconLoading,
-  IconSearch,
   IconUser,
   IconMoon,
-} from '~/component/icons';
+} from '~/component/Icons';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -78,14 +72,6 @@ function Header() {
   //Current User
   const currentUser = true;
 
-  //Search result
-  const [searchResult, setSearchResult] = useState([]);
-  useEffect(() => {
-    setTimeout(() => {
-      setSearchResult([]);
-    }, 2000);
-  }, []);
-
   //Handle Logic
   const handleMenuChange = (menuItem) => {
     console.log(menuItem);
@@ -125,56 +111,34 @@ function Header() {
           </Link>
         </div>
 
-        <HeadlessTippy
-          interactive={true}
-          visible={searchResult.length > 0}
-          render={(attrs) => (
-            <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-              <PopperWrapper>
-                <h4 className={cx('search-title')}>Accounts</h4>
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-              </PopperWrapper>
-            </div>
-          )}
-        >
-          <div className={cx('search')}>
-            <input className={cx('input')} placeholder="Search accounts and videos" spellCheck={false} />
-            <button className={cx('close-btn')}>
-              <IconClose />
-              <IconLoading />
-            </button>
-            <span className={cx('spanSplit')}></span>
-            <button className={cx('search-btn')}>
-              <IconSearch />
-            </button>
-          </div>
-        </HeadlessTippy>
+        <Search />
 
         <div className={cx('actions')}>
           {currentUser ? (
             <>
-              <Button href="/upload" leftIcon={<IconPlus />} text>
+              <Button href="/upload" text leftIcon={<IconPlus />}>
                 <span className={cx('text')}>Upload</span>
               </Button>
 
-              <Tippy content="Create Effect">
-                <Button
-                  href="https://effecthouse.tiktok.com/"
-                  className={cx('effecthouse-btn')}
-                  leftIcon={<IconEffecthouse />}
-                  target="_blank"
-                />
+              <Tippy delay={[0, 50]} content="Create Effect">
+                <button className={cx('effecthouse-btn')}>
+                  <a href="https://effecthouse.tiktok.com/" target="_blank" alt="Create Effect" rel="noreferrer">
+                    <IconEffecthouse />
+                  </a>
+                </button>
               </Tippy>
 
-              <Tippy content="Messages">
-                <Button to="/messages" className={cx('messages-btn')} leftIcon={<IconMessage />} />
+              <Tippy delay={[0, 50]} content="Messages">
+                <button to="/messages" className={cx('messages-btn')}>
+                  <IconMessageWhite width="100%" height="100%" />
+                </button>
               </Tippy>
 
-              <Tippy content="Inbox">
-                <Button className={cx('notification-btn')} leftIcon={<IconNotification />} />
+              <Tippy delay={[0, 50]} content="Inbox">
+                <button className={cx('notification-btn')}>
+                  <IconNotification width="100%" height="100%" className={cx('notification-icon')} />
+                  <span className={cx('badge')}>99+</span>
+                </button>
               </Tippy>
             </>
           ) : (
@@ -182,13 +146,16 @@ function Header() {
               <Button href="/upload" leftIcon={<IconPlus />} text>
                 <span className={cx('text')}>Upload</span>
               </Button>
+
               <Button primary>Log in</Button>
-              <Button
-                href="https://effecthouse.tiktok.com/"
-                className={cx('effecthouse-btn')}
-                leftIcon={<IconEffecthouse />}
-                target="_blank"
-              />
+
+              <Tippy delay={[0, 50]} content="Create Effect">
+                <button className={cx('effecthouse-btn')}>
+                  <a href="https://effecthouse.tiktok.com/" target="_blank" alt="Create Effect" rel="noreferrer">
+                    <IconEffecthouse />
+                  </a>
+                </button>
+              </Tippy>
             </>
           )}
 
@@ -198,7 +165,7 @@ function Header() {
                 className={cx('user-avatar')}
                 src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/7201039952703029253~c5_720x720.jpeg?x-expires=1679475600&x-signature=5Gxz4Y27nY%2FwSseKo8rNVn8WmVE%3D"
                 alt="Pham van Huy"
-               // customFallback=""
+                // customFallback=""
               />
             ) : (
               <button className={cx('more-btn')}>
