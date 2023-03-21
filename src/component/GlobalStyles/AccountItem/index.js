@@ -1,6 +1,7 @@
+
 import classNames from 'classnames/bind';
+import { IconCheck } from '~/component/icons';
 import styles from './AccountItem.module.scss';
-import { Check } from '~/assets/images';
 
 const cx = classNames.bind(styles);
 
@@ -14,10 +15,10 @@ function AccountItem() {
       />
       <div className={cx('info')}>
         <h4 className={cx('name')}>
-          <span>Nguyen Van Hung </span>
-          <Check className={cx('icon-check')} />
+          <span>Nguyen Van A </span>
+          <IconCheck/>
         </h4>
-        <span className={cx('usename')}>NguyenVanHung</span>
+        <span className={cx('usename')}>NguyenVanA</span>
       </div>
     </div>
   );
