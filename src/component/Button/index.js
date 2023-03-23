@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
@@ -16,7 +17,7 @@ const Button = forwardRef(
       small = false,
       large = false,
       rounded = false,
-      disabeld = false,
+      disabled = false,
       children,
       className,
       leftIcon,
@@ -31,8 +32,8 @@ const Button = forwardRef(
       onClick,
       ...passProps,
     };
-    //Remove event Listener when button is disabeld
-    if (disabeld) {
+    //Remove event Listener when button is disabled
+    if (disabled) {
       Object.keys(props).forEach((key) => {
         if (key.startsWith('on') && typeof props[key] === 'function') {
           delete props[key];
@@ -56,7 +57,7 @@ const Button = forwardRef(
       small,
       large,
       rounded,
-      disabeld,
+      disabled,
     });
 
     return (
@@ -68,4 +69,23 @@ const Button = forwardRef(
     );
   },
 );
+
+// dùng để săn error
+Button.propTypes = {
+  to: PropTypes.string,
+  href: PropTypes.string,
+  primary: PropTypes.bool,
+  outline: PropTypes.bool,
+  text: PropTypes.bool,
+  small: PropTypes.bool,
+  large: PropTypes.bool,
+  rounded: PropTypes.bool,
+  disabled: PropTypes.bool,
+  className: PropTypes.string,
+  leftIcon: PropTypes.node,
+  rightIcon: PropTypes.node,
+  onClick: PropTypes.func,
+  children: PropTypes.node.isRequired,
+};
+
 export default Button;

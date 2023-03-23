@@ -5,13 +5,13 @@ import styles from './Search.module.scss';
 import 'tippy.js/dist/tippy.css'; // optional
 import HeadlessTippy from '@tippyjs/react/headless';
 
-import { useDebounce } from '~/hooks';
+import  useDebounce  from '~/hooks';
 import { Wrapper as PopperWrapper } from '../Popper';
 import AccountItem from '~/component/GlobalStyles/AccountItem';
 
 import { IconClear, IconLoading, IconSearch } from '~/component/Icons';
-import * as searchServices from '~/services/searchServices';
-import routesConfig from '~/config/routes';
+import * as searchService from '~/services/searchService';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
@@ -31,7 +31,7 @@ function Search() {
     }
     const fetchApi = async () => {
       setLoading(true);
-      const result = await searchServices.search(debouncedValue);
+      const result = await searchService.search(debouncedValue);
       setSearchResult(result);
       setLoading(false);
     };
@@ -75,7 +75,7 @@ function Search() {
         onClickOutside={handleHideResult}
       >
         <div className={cx('search')}>
-          <form className={cx('search-form')} action={routesConfig.search}>
+          <form className={cx('search-form')} action={config.routes.search}>
             <input
               ref={inputRef}
               value={searchValue}

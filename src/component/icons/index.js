@@ -160,7 +160,7 @@ export const IconCheck = ({ width = '14', height = '14', className }) => {
   );
 };
 
-export const IconPlus = ({ width = '17', height = '17', className }) => {
+export const IconPlus = ({ width = '19', height = '19', className }) => {
   return (
     <svg
       width={width}

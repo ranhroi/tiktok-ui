@@ -7,17 +7,17 @@ import Profile from '~/pages/Profile';
 import Live from '~/pages/Live';
 import Upload from '~/pages/Upload';
 import Search from '~/pages/Search';
-import routesConfig from '~/config/routes';
 import Messages from '~/pages/Messages';
+import config from '~/config';
 
 const publicRoutes = [
-  { path: routesConfig.home, component: Home },
-  { path: routesConfig.following, component: Following },
-  { path: routesConfig.search, component: Search, layout: HeaderOnly },
-  { path: routesConfig.profile, component: Profile },
-  { path: routesConfig.upload, component: Upload, layout: false },
-  { path: routesConfig.messages, component: Messages },
-  { path: routesConfig.live, component: Live },
+  { path: config.routes.home, component: Home },
+  { path: config.routes.following, component: Following },
+  { path: config.routes.search, component: Search, layout: HeaderOnly },
+  { path: config.routes.profile, component: Profile },
+  { path: config.routes.upload, component: Upload, layout: false },
+  { path: config.routes.messages, component: Messages },
+  { path: config.routes.live, component: Live },
 ];
 
 const privateRoutes = [];

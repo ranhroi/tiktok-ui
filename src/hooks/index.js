@@ -1,1 +1,1 @@
-export { default as useDebounce } from './useDebounce';
+export { default,default as useDebounce } from './useDebounce';
