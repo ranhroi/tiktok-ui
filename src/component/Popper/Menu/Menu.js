@@ -4,10 +4,10 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css'; // optional
 
 import classNames from 'classnames/bind';
+import Wrapper  from '~/component/Popper';
 import styles from './Menu.module.scss';
 import MenuItem from './MenuItem';
 import Header from './Header';
-import { default as PopperWrapper } from '../Wrapper';
 
 const cx = classNames.bind(styles);
 const defaultFc = () => {};
@@ -45,7 +45,7 @@ function Menu({ items = [], hideOnClick = false, children, onChange = defaultFc 
       placement="bottom-end"
       render={(attrs) => (
         <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-          <PopperWrapper>
+          <Wrapper>
             {history.length > 1 && (
               <Header
                 title={current.title}
@@ -55,7 +55,7 @@ function Menu({ items = [], hideOnClick = false, children, onChange = defaultFc 
               />
             )}
             <div className={cx('menu-body')}>{renderItem()}</div>
-          </PopperWrapper>
+          </Wrapper>
         </div>
       )}
       onHide={() => {
