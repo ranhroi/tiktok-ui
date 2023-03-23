@@ -5,11 +5,11 @@
 }
 
 .container {
+  margin-top: var(--default-layout-header-height, 60px);
   width: var(--default-layout-width, 1150px);
   min-height: 1000px;
   display: flex;
   padding-left: 20px;
-
   padding: 0 var(--default-layout-horizontal-spacer);
 }
 

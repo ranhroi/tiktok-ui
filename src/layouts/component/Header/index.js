@@ -26,6 +26,7 @@ import {
   IconUser,
   IconMoon,
 } from '~/component/Icons';
+import routesConfig from '~/config/routes';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -44,12 +45,7 @@ const MENU_ITEMS = [
           type: 'language',
           code: 'vi',
           title: 'Vietnamese',
-        },
-        {
-          type: 'language',
-          code: 'cn',
-          title: 'Chinese',
-        },
+        }
       ],
     },
   },
@@ -106,7 +102,7 @@ function Header() {
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
         <div className={cx('logo')}>
-          <Link to="/" alt="Home" className={cx('link-home')}>
+          <Link to={routesConfig.home} alt="Home" className={cx('link-home')}>
             <IconLogo />
           </Link>
         </div>
@@ -116,7 +112,7 @@ function Header() {
         <div className={cx('actions')}>
           {currentUser ? (
             <>
-              <Button href="/upload" text leftIcon={<IconPlus />}>
+              <Button to={routesConfig.upload} text leftIcon={<IconPlus />}>
                 <span className={cx('text')}>Upload</span>
               </Button>
 
@@ -129,9 +125,9 @@ function Header() {
               </Tippy>
 
               <Tippy delay={[0, 50]} content="Messages">
-                <button to="/messages" className={cx('messages-btn')}>
+                <Link to={routesConfig.messages} className={cx('messages-btn')}>
                   <IconMessageWhite width="100%" height="100%" />
-                </button>
+                </Link>
               </Tippy>
 
               <Tippy delay={[0, 50]} content="Inbox">
@@ -143,7 +139,7 @@ function Header() {
             </>
           ) : (
             <>
-              <Button href="/upload" leftIcon={<IconPlus />} text>
+              <Button to={routesConfig.upload} leftIcon={<IconPlus />} text>
                 <span className={cx('text')}>Upload</span>
               </Button>
 
